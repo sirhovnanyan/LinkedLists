@@ -1,10 +1,11 @@
-package LinkedLists;
+package linkedlist;
+
+import java.util.NoSuchElementException;
 
 public class MyDoublyLinkedList implements MyList {
-
-    int size;
-    Node first;
-    Node last;
+    private int size;
+    private Node first;
+    private Node last;
 
     @Override
     public Integer get(int index) {
@@ -50,7 +51,6 @@ public class MyDoublyLinkedList implements MyList {
         Node current = first;
         for (int i = 0; i < size() - 1; i++) {
             if (current.next.value.equals(obj)) {
-
                 if (i == size - 2) {
                     current.next = null;
                     last = current;
@@ -82,11 +82,37 @@ public class MyDoublyLinkedList implements MyList {
         return false;
     }
 
-    class Node {
-        Integer value;
+    @Override
+    public Iterator iterator() {
+        return new ListIterator();
+    }
 
-        Node previous;
-        Node next;
+    private class ListIterator implements Iterator {
+        private Node returnedItem;
+        private Node next = first;
+        private int cursor;
+
+        @Override
+        public boolean hasNext() {
+            return cursor != size();
+        }
+
+        @Override
+        public int next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            returnedItem = next;
+            next = next.next;
+            cursor++;
+            return returnedItem.value;
+        }
+    }
+
+    private class Node {
+        private Integer value;
+        private Node previous;
+        private Node next;
 
         public Node(Integer value) {
             this.value = value;

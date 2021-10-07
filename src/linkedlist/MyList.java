@@ -1,4 +1,4 @@
-package LinkedLists;
+package linkedlist;
 
 public interface MyList {
     Integer get(int index);
@@ -12,4 +12,12 @@ public interface MyList {
     int size();
 
     boolean contains(Integer obj);
+
+    Iterator iterator();
+
+    interface Iterator {
+        boolean hasNext();
+
+        int next();
+    }
 }
