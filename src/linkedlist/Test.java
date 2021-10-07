@@ -2,7 +2,7 @@ package linkedlist;
 
 public class Test {
     public static void main(String[] args) {
-        MySinglyLinkedList singlyLinkedList = new MySinglyLinkedList();
+        MySinglyLinkedList<Integer> singlyLinkedList = new MySinglyLinkedList<Integer>();
         singlyLinkedList.add(78);
         singlyLinkedList.add(94);
         singlyLinkedList.add(123);
@@ -17,12 +17,12 @@ public class Test {
 
         System.out.println("My Singly Linked List: " + singlyLinkedList.toString());
         System.out.print("Iterating my singly linked list using Iterator: ");
-        MyList.Iterator itr = singlyLinkedList.iterator();
+        MyList.Iterator<Integer> itr = singlyLinkedList.iterator();
         while (itr.hasNext()) {
             System.out.print(itr.next() + " ");
         }
 
-        MyDoublyLinkedList doublyLinkedList = new MyDoublyLinkedList();
+        MyDoublyLinkedList<Integer> doublyLinkedList = new MyDoublyLinkedList<Integer>();
 
         doublyLinkedList.add(45);
         doublyLinkedList.add(46);
@@ -30,15 +30,25 @@ public class Test {
         doublyLinkedList.add(48);
         doublyLinkedList.add(49);
         doublyLinkedList.remove((Integer) 47);
-        System.out.println("\n"+doublyLinkedList.get(2));
+        System.out.println("\n" + doublyLinkedList.get(2));
         System.out.println(doublyLinkedList.contains(46));
         doublyLinkedList.remove(3);
 
         System.out.println("My Doubly Linked List: " + doublyLinkedList.toString());
         System.out.print("Iterating my doubly linked list using Iterator: ");
-        MyList.Iterator it = doublyLinkedList.iterator();
+        MyList.Iterator<Integer> it = doublyLinkedList.iterator();
         while (it.hasNext()) {
             System.out.print(it.next() + " ");
+        }
+
+        System.out.println();
+        MySinglyLinkedList<String> stringList = new MySinglyLinkedList<String>();
+        stringList.add("How");
+        stringList.add("are");
+        stringList.add("you?");
+        MyList.Iterator<String> iter = stringList.iterator();
+        while (iter.hasNext()) {
+            System.out.print(iter.next() + " ");
         }
     }
 }

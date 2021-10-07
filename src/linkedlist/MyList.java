@@ -1,23 +1,23 @@
 package linkedlist;
 
-public interface MyList {
-    Integer get(int index);
+public interface MyList<T> {
+    T get(int index);
 
-    void add(Integer obj);
+    void add(T obj);
 
     void remove(int index);
 
-    boolean remove(Integer obj);
+    boolean remove(T obj);
 
     int size();
 
-    boolean contains(Integer obj);
+    boolean contains(T obj);
 
-    Iterator iterator();
+    Iterator<T> iterator();
 
-    interface Iterator {
+    interface Iterator<T> {
         boolean hasNext();
 
-        int next();
+        T next();
     }
 }

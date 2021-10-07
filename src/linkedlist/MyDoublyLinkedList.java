@@ -2,17 +2,17 @@ package linkedlist;
 
 import java.util.NoSuchElementException;
 
-public class MyDoublyLinkedList implements MyList {
+public class MyDoublyLinkedList<T> implements MyList<T> {
     private int size;
-    private Node first;
-    private Node last;
+    private Node<T> first;
+    private Node<T> last;
 
     @Override
-    public Integer get(int index) {
+    public T get(int index) {
         if (index < 0 || index > size - 1) {
             throw new IllegalArgumentException();
         }
-        MyDoublyLinkedList.Node current = first;
+        Node<T> current = first;
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
@@ -20,8 +20,8 @@ public class MyDoublyLinkedList implements MyList {
     }
 
     @Override
-    public void add(Integer obj) {
-        Node node = new Node(obj);
+    public void add(T obj) {
+        Node<T> node = new Node(obj);
         if (first == null) {
             first = node;
             last = node;
@@ -36,19 +36,19 @@ public class MyDoublyLinkedList implements MyList {
 
     @Override
     public void remove(int index) {
-        Integer value = get(index);
+        T value = get(index);
         remove(value);
     }
 
     @Override
-    public boolean remove(Integer obj) {
+    public boolean remove(T obj) {
         if (first.value.equals(obj)) {
             first.next.previous = null;
             first = first.next;
             size--;
             return true;
         }
-        Node current = first;
+        Node<T> current = first;
         for (int i = 0; i < size() - 1; i++) {
             if (current.next.value.equals(obj)) {
                 if (i == size - 2) {
@@ -72,8 +72,8 @@ public class MyDoublyLinkedList implements MyList {
     }
 
     @Override
-    public boolean contains(Integer obj) {
-        MyDoublyLinkedList.Node current = first;
+    public boolean contains(T obj) {
+        Node<T> current = first;
         while (current != null) {
             if (current.value == obj)
                 return true;
@@ -83,13 +83,13 @@ public class MyDoublyLinkedList implements MyList {
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<T> iterator() {
         return new ListIterator();
     }
 
-    private class ListIterator implements Iterator {
-        private Node returnedItem;
-        private Node next = first;
+    private class ListIterator implements Iterator<T> {
+        private Node<T> returnedItem;
+        private Node<T> next = first;
         private int cursor;
 
         @Override
@@ -98,7 +98,7 @@ public class MyDoublyLinkedList implements MyList {
         }
 
         @Override
-        public int next() {
+        public T next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
@@ -109,12 +109,12 @@ public class MyDoublyLinkedList implements MyList {
         }
     }
 
-    private class Node {
-        private Integer value;
+    private class Node<T> {
+        private T value;
         private Node previous;
         private Node next;
 
-        public Node(Integer value) {
+        public Node(T value) {
             this.value = value;
         }
     }
