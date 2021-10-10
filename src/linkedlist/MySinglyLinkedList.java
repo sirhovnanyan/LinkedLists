@@ -1,3 +1,4 @@
+/*
 package linkedlist;
 
 import java.util.NoSuchElementException;
@@ -130,3 +131,4 @@ public class MySinglyLinkedList<T> implements MyList<T> {
         return result.toString();
     }
 }
+*/

@@ -13,11 +13,46 @@ public interface MyList<T> {
 
     boolean contains(T obj);
 
-    Iterator<T> iterator();
+    void addFirst(T obj);
+
+    void addLast(T obj);
+
+    T removeFirst();
+
+    T removeLast();
+
+    void push(T obj);
+
+    T pop();
+
+    boolean offerFirst(T obj);
+
+    boolean offerLast(T obj);
+
+    T poll();
+
+    T pollFirst();
+
+    T pollLast();
+
+    ListIterator<T> iterator();
+
+    Iterator<T> descendingIterator();
+
+    interface ListIterator<T> {
+        boolean hasNext();
+
+        T next();
+
+        boolean hasPrevious();
+
+        T previous();
+    }
 
     interface Iterator<T> {
         boolean hasNext();
 
         T next();
     }
+
 }
